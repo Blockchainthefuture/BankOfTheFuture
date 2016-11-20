@@ -42,19 +42,17 @@
             float: left;
             border: .5px solid #95a5a6;
             position: fixed;
-            padding-top: 30px;
+            padding-top: 0px;
             bottom: 0;
-            top: 485px;
         }
 
         #fuckthree {
             width: 50%;
             text-align: center;
             background-color: #bdc3c7;
-            position: fixed;
-            float: right;
             border: .5px solid #95a5a6;
             padding-top: 30px;
+            float: right;
             bottom: 0;
             right: 0;
             top: 485px;
@@ -253,13 +251,16 @@
         function SENDADDRESS() {
             address = document.getElementById("CryptroAddress").value;
             document.getElementById("ADDRESSNAME").innerHTML = address;
+            console.log("THIS SHOULD WORK");
             console.log(checkValidate(address)[0]);
             if (checkValidate(address)[0]) {
                 socket.emit('chat message', address);
                 //console.log(checkValidate(address)[0]);
+                console.log("works");
                 document.getElementById("ADDRESSNAME").innerHTML = "Thanks You will be getting some " + checkValidate(address)[1];
             } else {
                 document.getElementById("ADDRESSNAME").innerHTML = "PROBLEM PROCESSING ADDRESS";
+                console.log("problem");
 
             }
         }
@@ -313,13 +314,13 @@
 
     <div id="fucktwo">
 
-        <div id="headerone">Curious about your Crypto!</div>
+        <div id="headerone">Please Put In Your Cryptro Public Key Below</div>
         <form action="">
             <input type="text" id="CryptroAddress" placeholder="If Necessary, Input Your Crypto Address"><br>
             <button type="button" class="btn btn-primary" onclick="SENDADDRESS()">
                   <p>Click for Crypto Address</p></button>
         </form>
-        <div id="ADDRESSNAME">YOUR CRYPTO ADDRESS IS</div>
+        <p id="ADDRESSNAME">YOUR CRYPTO ADDRESS IS</p>
     </div>
 
     <div id="fuckthree">
