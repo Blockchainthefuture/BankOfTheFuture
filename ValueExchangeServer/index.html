@@ -1,37 +1,41 @@
 <html>
 <!-- Latest compiled and minified CSS -->
+
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style type="text/css">
-            div.tdlogotwo{
-                    background-color: #1c5437;
-                    margin-top: -10px; margin-left: -10px; margin-right: -10px; height: 110px;
-                }
-        div.elogo{
-                margin-top: 12px;
-                }
+        div.tdlogotwo {
+            background-color: #1c5437;
+            margin-top: -10px;
+            margin-left: -10px;
+            margin-right: -10px;
+            height: 110px;
+        }
 
-        div.username{
-                    font-size: 40px;
-                    color: #ffffff;
-                    text-align: center;
-                    margin-top: -64px;
-                }
+        div.elogo {
+            margin-top: 12px;
+        }
 
-        div.menu{
-                   float: right;
-                   position: relative;
-                   top: -75px;
-                }
+        div.username {
+            font-size: 40px;
+            color: #ffffff;
+            text-align: center;
+            margin-top: -64px;
+        }
 
-        #fuckone{
+        div.menu {
+            float: right;
+            position: relative;
+            top: -75px;
+        }
+
+        #fuckone {
             text-align: center;
             background-color: #ecf0f1;
             padding: 20px;
-
         }
 
-        #fucktwo{
+        #fucktwo {
             width: 50%;
             text-align: center;
             background-color: #bdc3c7;
@@ -39,13 +43,11 @@
             border: .5px solid #95a5a6;
             position: fixed;
             padding-top: 30px;
-            bottom: 0; top:485px;
-
-
-
+            bottom: 0;
+            top: 485px;
         }
 
-        #fuckthree{
+        #fuckthree {
             width: 50%;
             text-align: center;
             background-color: #bdc3c7;
@@ -53,36 +55,37 @@
             float: right;
             border: .5px solid #95a5a6;
             padding-top: 30px;
-            bottom: 0; right: 0; top: 485px;
+            bottom: 0;
+            right: 0;
+            top: 485px;
         }
 
-        #header{
+        #header {
             margin-top: 15px;
             margin-bottom: -20px;
         }
 
-        p{
+        p {
             font-size: 12px;
             margin-top: 10px;
         }
 
-        .btn-primary{
+        .btn-primary {
             border: none;
             color: #ffffff;
             background-color: #144029;
-
         }
 
-        .btn-primary:hover{
+        .btn-primary:hover {
             background-color: #27ae60;
-
         }
-        #amount{
+
+        #amount {
             padding: 10px;
             text-align: center;
         }
 
-        #CryptroAddress{
+        #CryptroAddress {
             padding: 10px;
             width: 300px;
             margin-top: 15px;
@@ -90,21 +93,20 @@
             text-align: center;
         }
 
-        .conv{
+        .conv {
             font-size: 16px;
             color: #ffffff;
             position: relative;
             margin: 0 auto;
             background-color: #c0392b;
             width: 300px;
-
         }
 
-        .h3{
+        .h3 {
             font-size: 5px;
         }
 
-        #ADDRESSNAME{
+        #ADDRESSNAME {
             background-color: #349767;
             width: 250px;
             font-size: 14px;
@@ -114,13 +116,13 @@
             text-align: center;
         }
 
-        #amount{
+        #amount {
             margin-top: 10px;
             margin-bottom: 10px;
             width: 200px;
         }
 
-        #headerone{
+        #headerone {
             font-size: 14px;
         }
     </style>
@@ -129,217 +131,205 @@
 
 <body>
 
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-    function checkValidate(address) {
-        if ((address.length >= 26 && address.length <= 35) && (address[0] == 1 || address[0] == 3)) {
-            //console.log("true");
-            return ["true", "BITCOIN", address];
-        } else if (address[0] == '0' && address[1] == 'x') {
-            //console.log("true");
-            return ["true", "ETH", address];
-        } else {
-            //console.log("false");
-            return false;
-        }
-    }
-
-
-    checkValidate("0xd24a598f8a2c22dee43368dc67ef27c83a3a5ce5e6579f62fd89178b38268e8e");
-
-    BIT = 1020;
-    ETH = 13;
-    CAD = 1;
-    rate = 0.1;
-
-    function getRandom(price) {
-        r = rate / 100;
-        min = price - price * r;
-        max = price + price * r;
-        price = (Math.random() * (max - min) + min).toFixed(2);
-        console.log(price);
-        //return (Math.random() * (max - min) + min).toFixed(2);
-    }
-    //setInterval(getRandom, 10000, BIT);
-    function exchangeCurrency(input, output, amt) {
-        var outamt;
-        if (input == "CAD") {
-            if (output == "ETH") {
-                outamt = (amt / ETH).toFixed(2);
-                return outamt;
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        function checkValidate(address) {
+            if ((address.length >= 26 && address.length <= 35) && (address[0] == 1 || address[0] == 3)) {
+                //console.log("true");
+                return ["true", "BITCOIN", address];
+            } else if (address[0] == '0' && address[1] == 'x') {
+                //console.log("true");
+                return ["true", "ETH", address];
             } else {
-                outamt = (amt / BIT).toFixed(2);
-                return outamt;
-            }
-
-        } else if (input == "ETH") {
-            if (output == "CAD") {
-                outamt = (amt * ETH).toFixed(2);
-                return outamt;
-            } else {
-                outamt = (amt / (BIT / ETH)).toFixed(2);
-                return outamt;
-            }
-        } else {
-            if (output == "ETH") {
-                outamt = (amt * (BIT / ETH)).toFixed(2);
-                return outamt;
-            } else {
-                outamt = (amt * BIT).toFixed(2);
-                return outamt;
+                //console.log("false");
+                return false;
             }
         }
-    }
-
-    //exchangeCurrency("BIT", "ETH", 3000);
-    //variables
-    var buyOrSell = "unknown"
-    var currency1 = "unknown";
-    var currency2 = "unknown";
-    var address = "unknown";
-    //scocet IO
-    var socket = io();
-    socket.on('chat message', function(msg) {
-        console.log(msg);
-    });
-    //GUI Stuff
-    function ChangeInputCAD1() {
-        document.getElementById("Currency1").innerHTML = "CAD";
-        currency1 = "CAD";
-    }
 
 
-    function ChangeInputBITCOIN1() {
-        document.getElementById("Currency1").innerHTML = "BITCOIN";
-        currency1 = "BITCOIN";
-    }
+        checkValidate("0xd24a598f8a2c22dee43368dc67ef27c83a3a5ce5e6579f62fd89178b38268e8e");
+        //variables
+        var buyOrSell = "unknown"
+        var currency1 = "unknown";
+        var currency2 = "unknown";
+        var address = "unknown";
+        BIT = 1020;
+        ETH = 13;
+        CAD = 1;
+        rate = 0.1;
 
-    function ChangeInputETH1() {
-        document.getElementById("Currency1").innerHTML = "ETH";
-        currency1 = "ETH";
-    }
-
-    function ChangeInputCAD2() {
-        document.getElementById("Currency2").innerHTML = "CAD";
-        currency2 = "CAD";
-    }
-
-
-    function ChangeInputBITCOIN2() {
-        document.getElementById("Currency2").innerHTML = "BITCOIN";
-        currency2 = "BITCOIN";
-    }
-
-    function ChangeInputETH2() {
-        document.getElementById("Currency2").innerHTML = "ETH";
-        currency2 = "ETH";
-    }
-
-    function CheckValidValue(user_input) {
-        address = document.getElementById("CryptroAddress").value;
-        document.getElementById("ADDRESSNAME").innerHTML = address;
-        console.log(address);
-    }
-
-    function SendBuySell() { //FinalButton
-        var amount = document.getElementById("amount").value;
-        var numAmount = parseFloat(amount);
-        console.log(isNaN(parseFloat(amount)));
-        console.log(numAmount, "");
-        if (currency1 == "unknown" || currency2 == "unknown") {
-            document.getElementById("CalculateAmount").innerHTML = "PLEASE CHOOSE CURRENCIES TO CONVERT";
-        } else if (amount == "") {
-            document.getElementById("CalculateAmount").innerHTML = "PLEASE INPUT A AMOUNT";
-        } else if (isNaN(parseFloat(amount)) == true) {
-            document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
-        } else if (numAmount < 0.001 || numAmount > 1000) {
-            document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
-        } else {
-            document.getElementById("CalculateAmount").innerHTML = exchangeCurrency(currency1, currency1, numAmount);
+        function getRandom(price) {
+            r = rate / 100;
+            min = price - price * r;
+            max = price + price * r;
+            price = (Math.random() * (max - min) + min).toFixed(2);
+            console.log(price);
+            //return (Math.random() * (max - min) + min).toFixed(2);
         }
-    }
-
-    function SENDADDRESS() {
-        address = document.getElementById("CryptroAddress").value;
-        document.getElementById("ADDRESSNAME").innerHTML = address;
-        console.log(checkValidate(address)[0]);
-        if (checkValidate(address)[0]){
-          socket.emit('chat message', address);
-          //console.log(checkValidate(address)[0]);
-          document.getElementById("ADDRESSNAME").innerHTML = "Thanks You will be getting some " + checkValidate(address)[1];
-        } else {
-          document.getElementById("ADDRESSNAME").innerHTML = "PROBLEM PROCESSING ADDRESS";
-
+        //setInterval(getRandom, 10000, BIT);
+        function exchangeCurrency(amt) {
+            input = currency1;
+            output = currency2;
+            if ((input == "CAD") && (output == "ETH")) {
+                return (amt * ETH);
+            } else if ((input == "CAD") && (output == "BITCOIN")) {
+                return (amt * BIT);
+            } else if ((input == "ETH") && (output == "BITCOIN")) {
+                return (amt / BIT);
+            } else if ((input == "ETH") && (output == "CAD")) {
+                return (amt / ETH);
+            } else if ((input == "BITCOIN") && (output = "CAD")) {
+                return (amt * BIT);
+            } else if ((input == "BITCOIN") && (output = "CAD")) {
+                return (amt * BIT);
+            }
+            return ("ERROR");
         }
-    }
-</script>
+
+        //exchangeCurrency("BIT", "ETH", 3000);
+        //scocet IO
+        var socket = io();
+        socket.on('chat message', function(msg) {
+            console.log(msg);
+        });
+        //GUI Stuff
+        function ChangeInputCAD1() {
+            document.getElementById("Currency1").innerHTML = "CAD";
+            currency1 = "CAD";
+        }
 
 
-<div class="tdlogotwo">
+        function ChangeInputBITCOIN1() {
+            document.getElementById("Currency1").innerHTML = "BITCOIN";
+            currency1 = "BITCOIN";
+        }
 
-            <div class="elogo">
+        function ChangeInputETH1() {
+            document.getElementById("Currency1").innerHTML = "ETH";
+            currency1 = "ETH";
+        }
+
+        function ChangeInputCAD2() {
+            document.getElementById("Currency2").innerHTML = "CAD";
+            currency2 = "CAD";
+        }
+
+
+        function ChangeInputBITCOIN2() {
+            document.getElementById("Currency2").innerHTML = "BITCOIN";
+            currency2 = "BITCOIN";
+        }
+
+        function ChangeInputETH2() {
+            document.getElementById("Currency2").innerHTML = "ETH";
+            currency2 = "ETH";
+        }
+
+        function CheckValidValue(user_input) {
+            address = document.getElementById("CryptroAddress").value;
+            document.getElementById("ADDRESSNAME").innerHTML = address;
+            console.log(address);
+        }
+
+        function SendBuySell() { //FinalButton
+            var amount = document.getElementById("amount").value;
+            var numAmount = parseFloat(amount);
+            console.log(isNaN(parseFloat(amount)));
+            console.log(numAmount, "");
+            if (currency1 == "unknown" || currency2 == "unknown") {
+                document.getElementById("CalculateAmount").innerHTML = "PLEASE CHOOSE CURRENCIES TO CONVERT";
+            } else if (amount == "") {
+                document.getElementById("CalculateAmount").innerHTML = "PLEASE INPUT A AMOUNT";
+            } else if (isNaN(parseFloat(amount)) == true) {
+                document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
+            } else if (numAmount < 0.001 || numAmount > 1000) {
+                document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
+            } else {
+                document.getElementById("CalculateAmount").innerHTML = exchangeCurrency(numAmount);
+            }
+        }
+
+        function SENDADDRESS() {
+            address = document.getElementById("CryptroAddress").value;
+            document.getElementById("ADDRESSNAME").innerHTML = address;
+            console.log(checkValidate(address)[0]);
+            if (checkValidate(address)[0]) {
+                socket.emit('chat message', address);
+                //console.log(checkValidate(address)[0]);
+                document.getElementById("ADDRESSNAME").innerHTML = "Thanks You will be getting some " + checkValidate(address)[1];
+            } else {
+                document.getElementById("ADDRESSNAME").innerHTML = "PROBLEM PROCESSING ADDRESS";
+
+            }
+        }
+    </script>
+
+
+    <div class="tdlogotwo">
+
+        <div class="elogo">
             <a href="http://imgur.com/VixOqsf"><img src="http://i.imgur.com/VixOqsf.png" title="source: imgur.com" /></a>
-            </div>
+        </div>
 
-            <div class="username">
+        <div class="username">
             Hi, John Smith!
-            </div>
+        </div>
 
-            <div class="menu">
+        <div class="menu">
             <a href="http://imgur.com/eYNhZWn"><img src="http://i.imgur.com/eYNhZWn.png" title="source: imgur.com" /></a>
-            </div>
-</div>
+        </div>
+    </div>
 
 
-        <div id="fuckone">
+    <div id="fuckone">
 
-            <div id="headerone">Keep yourself updated with current exchange rates!</div>
+        <div id="headerone">Keep yourself updated with current exchange rates!</div>
 
-            <div id="header"><b>CHOOSE TO CONVERT</b></div>
+        <div id="header"><b>CHOOSE TO CONVERT</b></div>
 
-            <div class="btn-group">
-                <h3>FROM</h3>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputCAD1()">CAD</button>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputBITCOIN1()">BITCOIN</button>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputETH1()">ETH</button>
-            </div>
-
-            <div class="btn-group">
-                <h3>TO</h3>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputCAD2()">CAD</button>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputBITCOIN2()">BITCOIN</button>
-                <button type="button" class="btn btn-primary" onclick="ChangeInputETH2()">ETH</button>
-            </div>
-
-            <form action="">
-                <input type="text" name="fname" id="amount" placeholder="Please Enter Your Amount"><br>
-                <button type="button" class="btn btn-primary" onclick="SendBuySell()">Click convert<p id="Currency1">CAD/BITCOIN/ETH</p>to<p id="Currency2">CAD/BITCOIN/ETH</p></button>
-            </form>
-            <h3 id="CalculateAmount" class="conv"></h3>
-            <h3 id="CalculateAmount"></h3>
-
+        <div class="btn-group">
+            <h3>FROM</h3>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputCAD1()">CAD</button>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputBITCOIN1()">BITCOIN</button>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputETH1()">ETH</button>
         </div>
 
-        <div id="fucktwo">
+        <div class="btn-group">
+            <h3>TO</h3>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputCAD2()">CAD</button>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputBITCOIN2()">BITCOIN</button>
+            <button type="button" class="btn btn-primary" onclick="ChangeInputETH2()">ETH</button>
+        </div>
 
-            <div id="headerone">Curious about your Crypto!</div>
-            <form action="">
-                <input type="text" id="CryptroAddress" placeholder="If Necessary, Input Your Crypto Address"><br>
-                <button type="button" class="btn btn-primary" onclick="SENDADDRESS()">
+        <form action="">
+            <input type="text" name="fname" id="amount" placeholder="Please Enter Your Amount"><br>
+            <button type="button" class="btn btn-primary" onclick="SendBuySell()">Click convert<p id="Currency1">CAD/BITCOIN/ETH</p>to<p id="Currency2">CAD/BITCOIN/ETH</p></button>
+        </form>
+        <h3 id="CalculateAmount" class="conv"></h3>
+        <h3 id="CalculateAmount"></h3>
+
+    </div>
+
+    <div id="fucktwo">
+
+        <div id="headerone">Curious about your Crypto!</div>
+        <form action="">
+            <input type="text" id="CryptroAddress" placeholder="If Necessary, Input Your Crypto Address"><br>
+            <button type="button" class="btn btn-primary" onclick="SENDADDRESS()">
                   <p>Click for Crypto Address</p></button>
-            </form>
-            <div id="ADDRESSNAME">YOUR CRYPTO ADDRESS IS</div>
-        </div>
+        </form>
+        <div id="ADDRESSNAME">YOUR CRYPTO ADDRESS IS</div>
+    </div>
 
-            <div id="fuckthree">
-                <div id="headerone" style="margin-bottom: 30px;">You can also pay through your Bank Card!</div>
-                <form action="/your-server-side-code" method="POST">
-                    <script document.getElementById("demo"); src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_WfgMCwpcbmES5fFclb4Xtr9z" data-amount="9999" data-name="Demo Site" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto">
-                    </script>
-                </form>
-            </div>
-    </body>
+    <div id="fuckthree">
+        <div id="headerone" style="margin-bottom: 30px;">You can also pay through your Bank Card!</div>
+        <form action="/your-server-side-code" method="POST">
+            <script document.getElementById( "demo"); src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_WfgMCwpcbmES5fFclb4Xtr9z" data-amount="9999" data-name="Demo Site" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto">
+            </script>
+        </form>
+    </div>
+</body>
 
 </html>
