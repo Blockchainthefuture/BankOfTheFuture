@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script>
+	function CheckLogIn() {
+		var user = document.getElementById("username").value;
+		var pass = document.getElementById("password").value;
+		console.log(user);
+		console.log(pass);
+		if (user == "admin" && pass == "password") {
+				window.location.replace("http://stackoverflow.com");
+		}
+	}
+</script>
+
+<body>
+	<div class="back 	">
+		<img src="C:\Users\Admin\Desktop\HACK\back.png" align="middle">
+	</div>
+	<div class="tdimg">
+		<img src="C:\Users\Admin\Desktop\HACK\logo.png" align="middle">
+	</div>
+
+	<div class="login">
+		<!-- -->
+		<form action="">
+			<input type="text" id="username"><br>
+		</form>
+
+		<form action="">
+			<input type="text" id="password"><br>
+		</form>
+
+		<div>
+			<button type="button" class="btn btn-primary" onclick="CheckLogIn()">
+			</div>
+			<!-- -->
+	</div>
+
+</body>
+
+</html>
