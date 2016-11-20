@@ -1,0 +1,113 @@
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<h1> Buy And Sell Crypto With Stripe</h1>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    //variables
+    var buyOrSell = "unknown"
+    var currency = "unknown";
+    var address = "unknown";
+    //scocet IO
+    var socket = io();
+    socket.on('chat message', function(msg) {
+        console.log(msg);
+    });
+    //GUI Stuff
+
+    function ChangeInputBuy() { //BuyButton
+        document.getElementById("BuySell").innerHTML = "BUY";
+        buyOrSell = "Buy";
+    }
+
+    function ChangeInputSell() { //SellButton
+        document.getElementById("BuySell").innerHTML = "SELL";
+        BuyOrSell = "Sell";
+    }
+
+    function ChangeInputCAD() {
+        document.getElementById("Currency").innerHTML = "CAD";
+        currency = "CAD";
+    }
+
+
+    function ChangeInputBITCOIN() {
+        document.getElementById("Currency").innerHTML = "BITCOIN";
+        currency = "BITCOIN";
+    }
+
+    function ChangeInputETH() {
+        document.getElementById("Currency").innerHTML = "ETH";
+        currency = "ETH";
+    }
+
+    function CheckValidValue(user_input) {
+        address = document.getElementById("CryptroAddress").value;
+        document.getElementById("ADDRESSNAME").innerHTML = address;
+        console.log(address);
+    }
+
+    function SendBuySell() { //FinalButton
+        var amount = document.getElementById("amount").value;
+        var numAmount = parseFloat(amount);
+        console.log(isNaN(parseFloat(amount)));
+        console.log(numAmount, "ASDASDASDADS");
+        if (currency == "unknown" || buyOrSell == "unknown") {
+            document.getElementById("CalculateAmount").innerHTML = "PLEASE CHOOSE TO BUY/SELL AND WHAT CURRENCY";
+        } else if (amount == "") {
+            document.getElementById("CalculateAmount").innerHTML = "PLEASE INPUT A AMOUNT";
+        } else if (isNaN(parseFloat(amount)) == true) {
+            document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
+        } else if (numAmount < 0.001 || numAmount > 1000) {
+            document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
+        } else {
+            document.getElementById("CalculateAmount").innerHTML = amount;
+        }
+    }
+
+    function SENDADDRESS() {
+        address = document.getElementById("CryptroAddress").value;
+        document.getElementById("ADDRESSNAME").innerHTML = address;
+        console.log(address);
+        socket.emit('chat message', address);
+    }
+</script>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" onclick="ChangeInputSell()">SELL</button>
+    <button type="button" class="btn btn-primary" onclick="ChangeInputBuy()">BUY</button>
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" onclick="ChangeInputCAD()">CAD</button>
+    <button type="button" class="btn btn-primary" onclick="ChangeInputBITCOIN()">BITCOIN</button>
+    <button type="button" class="btn btn-primary" onclick="ChangeInputETH()">ETH</button>
+</div>
+
+<form action="">
+    <input type="text" name="fname" id="amount"><br>
+    <button type="button" class="btn btn-primary" onclick="SendBuySell()"><p id="BuySell"> Buy/Sell</p>
+      <p id="Currency">CAD/BITCOIN/ETH</p></button>
+</form>
+<h3 id="CalculateAmount">Fill Out Form Above</h3>
+
+
+<br><br><br>
+<h3 id="CalculateAmount">Input Your Crypto Address Below If Necessary</h3>
+<form action="">
+    <input type="text" id="CryptroAddress"><br>
+    <button type="button" class="btn btn-primary" onclick="SENDADDRESS()">
+      <p>CRYPTO ADDRESS</p></button>
+</form>
+<h3 id="ADDRESSNAME">Your Crypro Address Is</h3>
+
+<br><br><br>
+<form action="/your-server-side-code" method="POST">
+    <script document.getElementById( "demo"); src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_WfgMCwpcbmES5fFclb4Xtr9z" data-amount="9999" data-name="Demo Site" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+    </script>
+    <span style="display: block; min-height: 30px;">Pay with Card</span>
+</form>
+
+</html>
