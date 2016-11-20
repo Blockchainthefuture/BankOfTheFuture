@@ -256,7 +256,7 @@
         } else if (numAmount < 0.001 || numAmount > 1000) {
             document.getElementById("CalculateAmount").innerHTML = "ONLY ACCEPT NUMBERS (0.001, 1000)";
         } else {
-            document.getElementById("CalculateAmount").innerHTML = amount;
+            document.getElementById("CalculateAmount").innerHTML = exchangeCurrency(currency1, currency1, numAmount);
         }
     }
 
